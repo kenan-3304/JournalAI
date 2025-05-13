@@ -1,5 +1,8 @@
 from pydantic import BaseModel
 
+# This file contains the Pydantic models used for request and response validation
+# and serialization/deserialization in the FastAPI application.
+
 class UserCreate(BaseModel):
     username: str
     email: str
