@@ -20,8 +20,10 @@ class JournalCreate(BaseModel):
     title: str
     content:str
 
-class JournalResponse(BaseModel):
+class JournalResponse(JournalCreate):
     id: int
-    title: str
-    content: str
+    class Config:
+        orm_mode = True
+        # This allows Pydantic to work with SQLAlchemy models
+        # by converting them to dictionaries.
 

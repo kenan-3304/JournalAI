@@ -10,3 +10,15 @@ class User(Base):
     username = Column(String, unique=True, index=True)
     email = Column(String, unique=True, index=True)
     hashed_password = Column(String)
+    entries = relationship("JournalEntry", back_populates="user")
+
+class JournalEntry(Base):
+    __tablename__ = 'journal_entires'
+    id = Column(Integer, primary_key=True, index=True)
+    title = Column(String)
+    content = Column(String)
+    user_id = Column(Integer, ForeignKey("users.id"))
+
+    user = relationship("User", back_populates="entries")
+
+
